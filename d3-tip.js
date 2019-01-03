@@ -31,7 +31,6 @@ d3.tip = function() {
   //
   // Returns a tip
   tip.show = function() {
-      console.log("tip show");
     var args = Array.prototype.slice.call(arguments)
     if(args[args.length - 1] instanceof SVGElement) target = args.pop()
 

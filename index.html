@@ -15,7 +15,8 @@
         </div>
         <div class= "content-wrapper description-wrapper">
             <div id="select-container" class="select-container">
-                <select id="y-select">
+                <p>Y-axis:</p>
+                <select disabled onchange="updateDisplay()" id="y-select">
                     <option value="height">Height</option>
                     <option value="weight">Weight</option>
                     <option value="hp">HP</option>
@@ -24,8 +25,10 @@
                     <option value="special_attack">Special Attack</option>
                     <option value="special_defense">Special Defense</option>
                     <option value="speed">Speed</option>
+                    <option value="base_experience">Base Experience</option>
                 </select>
-                <select id="x-select">
+                <p>X-axis:</p>
+                <select disabled onchange="updateDisplay()" id="x-select">
                     <option value="height">Height</option>
                     <option selected value="weight">Weight</option>
                     <option value="hp">HP</option>
@@ -34,8 +37,10 @@
                     <option value="special_attack">Special Attack</option>
                     <option value="special_defense">Special Defense</option>
                     <option value="speed">Speed</option>
+                    <option value="base_experience">Base Experience</option>
                 </select>
             </div>
+            <input id="search" />
         </div>
         <div class="content-wrapper" id="graph">
             <div id="myProgress">

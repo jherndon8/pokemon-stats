@@ -2,6 +2,11 @@
   display: inline-block;
 }
 
+h2 {
+  margin: 5px;
+  padding: 0px;
+}
+
 #myProgress {
   width: 100%;
   background-color: grey;
@@ -63,9 +68,50 @@ h1 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Hel
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.d3-tip {
+  line-height: normal;
+  padding: 3px;
+  background: rgba(43, 43, 43, 0.9);
+  color: #fff;
+  border-radius: 4px;
+  font: 11px sans-serif;
+  text-align: center;
+}
+/* Creates a small triangle extender for the tooltip */
+.d3-tip.n:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+
+  margin: -2px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.d3-tip.s:before {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25B2";
+  position: absolute;
+  text-align: center;
+
+  margin: -8px 0 0 0;
+  top: 0%;
+  left: 0;
+}
+  
+
 .point {
-  fill: #83cf1e;
-  stroke: #75b91b;
   stroke-width: 1px;
 }
 

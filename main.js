@@ -52,6 +52,8 @@ function start() {
             data.push(response);
             if (data.length >= 649) {
                 document.getElementById('graph').removeChild(document.getElementById('myProgress'));
+                document.getElementById('y-select').disabled = false;
+                document.getElementById('x-select').disabled = false;
                 displayInitialData()
             } else {
                 document.getElementById('myBar').style.width = data.length/6.49  + "%"
@@ -95,13 +97,47 @@ function imageLink(id) {
 
 function onMouseOverTip() {
     var id = this.id.split("-")[1];
+    dir = this.classList.contains("under") ? 's' : 'n';
+    if (dir == 's') {
+        tip.offset([10, 0]);
+    } else {
+        tip.offset([-10, 0]);
+    }
     tipHtml = '<div style="text-align: center">'
-        + '<img src="' + imageLink(id) + '" height="150"/> <br>'
-        + '<h4>' + dataIdMap[id].species_name + '</h4><p>'
-        + dataIdMap[id].flavor_text.replace("\n", "<br>")
+        + '<h2>' + dataIdMap[id].species_name + '</h2>'
+        + '<p style="margin: 1px">'+ dataIdMap[id].type1 + (dataIdMap[id].type2 ? ', '+dataIdMap[id].type2 : '') + '<br>'
+        + '<img src="' + imageLink(id) + '" height="150"/> <br><p>'
+        + dataIdMap[id].flavor_text.split("\n").join("<br>")
         + '</p></div>'
-
+    tip.direction(dir);
     tip.show();
+}
+
+function updateDisplay() {
+    xValues = document.getElementById('x-select').value;
+    yValues = document.getElementById('y-select').value;
+
+    var maxX = d3.max(data, function(d) { return d[xValues] })
+    var maxY = d3.max(data, function(d) { return d[yValues] })
+
+    var t = d3.transition().duration(1000);
+
+    xScale = d3.scaleLinear().domain([0, maxX]).range([margin.left, width-margin.left]);
+    yScale = d3.scaleLinear().domain([0, maxY]).range([height - margin.bottom, margin.bottom]);
+
+    xAxis = d3.axisBottom(xScale);
+    yAxis = d3.axisLeft(yScale);
+    xContainer.transition(t).call(xAxis);
+    yContainer.transition(t).call(yAxis);
+
+    let circleGroup = svg.selectAll(".point")
+        .data(data);
+    circleGroup
+        .classed("under", function(d) {return d[yValues] >= maxY * 0.6})
+    circleGroup
+        .transition(t)
+        .attr('cx', function(d) { return xScale(d[xValues]) })
+        .attr('cy', function(d) { return yScale(d[yValues]) });
 }
 
 function displayInitialData() {
@@ -157,6 +193,31 @@ function displayInitialData() {
                 .attr("id", function(d) { return "point-" + d.id })
                 .attr("cx", function(d) { return xScale(d.weight) })
                 .attr("cy", function(d) { return yScale(d.height) })
+                .attr("style", function(d) {
+                    colors = {
+                        "Grass": "rgb(155, 204, 80)",
+                        "Poison": "rgb(185, 127, 201)",
+                        "Fire": "rgb(253, 125, 36)",
+                        "Flying": "rgb(61, 214, 239)",
+                        "Water": "rgb(69, 146, 196)",
+                        "Bug": "rgb(113, 159, 63)",
+                        "Normal": "rgb(164, 172, 175)",
+                        "Electric": "rgb(238, 213, 52)",
+                        "Ground": "rgb(193, 169, 58)",
+                        "Fairy": "rgb(253, 185, 233)",
+                        "Fighting": "rgb(213, 103, 35)",
+                        "Psychic": "rgb(243, 101, 185)",
+                        "Rock": "rgb(163, 140, 32)",
+                        "Steel": "rgb(158, 183, 184)",
+                        "Ice": "rgb(81, 196, 231)",
+                        "Ghost": "rgb(123, 98, 163)",
+                        "Dark": "rgb(112, 112, 112)",
+                        "Dragon": "#f55134"
+                    }
+                    return "fill: " + colors[d.type1] 
+                        + (d.type2 ? "; stroke: " + colors[d.type2] : "");
+                })
+                .classed("under", function(d) {return d.height >= maxHeight * 0.6})
                 //.on('mouseover', tip.show)
                 .on('mouseover', onMouseOverTip)
                 .on('mouseout', tip.hide);

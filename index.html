@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Statistics Vizualizer</title>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="d3-tip.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="title-wrapper">
+            <h1 class="title" id="title">Pokemon Statistics Visualizer</h1>
+        </div>
+        <div class= "content-wrapper description-wrapper">
+            <div id="select-container" class="select-container">
+                <select id="y-select">
+                    <option value="height">Height</option>
+                    <option value="weight">Weight</option>
+                    <option value="hp">HP</option>
+                    <option value="attack">Attack</option>
+                    <option value="defense">Defense</option>
+                    <option value="special_attack">Special Attack</option>
+                    <option value="special_defense">Special Defense</option>
+                    <option value="speed">Speed</option>
+                </select>
+                <select id="x-select">
+                    <option value="height">Height</option>
+                    <option selected value="weight">Weight</option>
+                    <option value="hp">HP</option>
+                    <option value="attack">Attack</option>
+                    <option value="defense">Defense</option>
+                    <option value="special_attack">Special Attack</option>
+                    <option value="special_defense">Special Defense</option>
+                    <option value="speed">Speed</option>
+                </select>
+            </div>
+        </div>
+        <div class="content-wrapper" id="graph">
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+.title {
+  display: inline-block;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
+
+.desc-wrapper {
+  min-width: 200px;
+  max-width: 200px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(224, 224, 224);
+  background-color: rgb(61, 61, 61);
+  border: 3px solid rgb(29, 29, 29);
+  border-radius: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.description-wrapper {
+  min-width: 200px;
+  max-width: 200px;
+  height: 550px;
+  vertical-align: top;
+  margin-left: 12px;
+  margin-right: 22px;
+}
+
+.title-wrapper {
+  text-align: center;
+}
+
+.content-wrapper {
+  display: inline-block;
+}
+
+.container {
+  min-width: 1100px; 
+}
+body {
+  background-color: rgb(255, 253, 241);
+}
+
+h1 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 36px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+.axis {
+  font: 12px "Segoe UI";
+}
+.axis path,
+
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.point {
+  fill: #83cf1e;
+  stroke: #75b91b;
+  stroke-width: 1px;
+}
+
+.point.hidden {
+  opacity: 0;
+}
